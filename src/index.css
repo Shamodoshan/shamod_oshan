@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* Any custom styles can go here */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
