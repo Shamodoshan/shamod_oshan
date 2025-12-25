@@ -1,9 +1,8 @@
 {
   "name": "shamod_oshan",
-  "private": true,
+  "homepage": "https://Shamodoshan.github.io/shamod_oshan/",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Shamodoshan.github.io/portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
