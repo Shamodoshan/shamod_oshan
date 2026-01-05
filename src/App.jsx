@@ -9,24 +9,42 @@ import profileImage from './assets/profile.png';
 // --- Components ---
 
 const Navbar = ({ darkMode, toggleTheme }) => (
-  <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
-    <div className="backdrop-blur-xl bg-white/70 dark:bg-slate-900/60 border border-gray-200 dark:border-white/10 rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
-      <a href="#home" className="text-xl font-bold tracking-tighter dark:text-white">
-        SHAMOD OSHAN<span className="text-purple-500">.</span>
+  <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
+    <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 border border-white/20 dark:border-white/10 rounded-xl px-6 py-3 flex justify-between items-center shadow-xl">
+      <a href="#home" className="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        SHAMOD OSHAN<span className="text-indigo-500">.</span>
       </a>
-      <div className="hidden md:flex gap-8 text-sm font-medium dark:text-gray-300">
+      <div className="hidden md:flex gap-10 text-sm font-medium">
         {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-purple-500 transition-colors">
+          <a 
+            key={item} 
+            href={`#${item.toLowerCase()}`} 
+            className="relative group text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+          >
             {item}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
           </a>
         ))}
       </div>
-      <button
-        onClick={toggleTheme}
-        className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 transition-all"
-      >
-        {darkMode ? <HiSun className="text-yellow-400 text-xl" /> : <HiMoon className="text-gray-600 text-xl" />}
-      </button>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={toggleTheme}
+          className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/80 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all duration-300 shadow-sm hover:shadow-md"
+          aria-label="Toggle dark mode"
+        >
+          {darkMode ? (
+            <HiSun className="text-indigo-400 text-xl transition-transform hover:rotate-12" />
+          ) : (
+            <HiMoon className="text-indigo-600 text-xl transition-transform hover:rotate-12" />
+          )}
+        </button>
+        <a 
+          href="#contact" 
+          className="hidden md:block px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-xl hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-300"
+        >
+          Get In Touch
+        </a>
+      </div>
     </div>
   </nav>
 );
@@ -142,23 +160,87 @@ export default function App() {
       <Navbar darkMode={darkMode} toggleTheme={() => setDarkMode(!darkMode)} />
 
       {/* Hero Section */}
-      <Section id="home" className="relative text-center">
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-tight dark:text-white">
-          Building digital <br />
-          <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">experiences</span> that matter.
-        </h1>
-        <p className="mt-8 text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-          I'm a Full Stack Developer specializing in building exceptional, human-centered products.
-        </p>
-        <div className="mt-10 flex gap-4">
-          <a href="#projects"><motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-full font-bold">
-            View Work
-          </motion.button></a>
-          <a href="#contact"><motion.button whileHover={{ scale: 1.05 }} className="px-8 py-4 border border-gray-300 dark:border-white/10 rounded-full font-medium">
-            Contact Me
-          </motion.button></a>
+      <Section id="home" className="min-h-[90vh] flex items-center justify-center relative overflow-hidden pt-20">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-white dark:from-slate-900 dark:to-slate-900/80"></div>
+          <div className="absolute inset-0 opacity-30 dark:opacity-5" style={{
+            backgroundImage: 'radial-gradient(circle at 10px 10px, #6366f1 1px, transparent 0)',
+            backgroundSize: '30px 30px'
+          }}></div>
         </div>
-        <div className="absolute bottom-10 animate-bounce text-2xl"><HiOutlineChevronDown /></div>
+
+        <div className="max-w-4xl w-full px-6 md:px-8 lg:px-12 mx-auto text-center">
+
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
+          >
+            <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+              Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Shamod Oshan</span>
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto"
+          >
+            I craft exceptional digital experiences with modern web technologies, 
+            focusing on clean code, intuitive design, and seamless user interactions.
+          </motion.p>
+
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          >
+            <a href="#projects">
+              <motion.button 
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-300 flex items-center gap-2 group mx-auto"
+              >
+                <span>View My Work</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </motion.button>
+            </a>
+            <a href="#contact">
+              <motion.button 
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3.5 border-2 border-indigo-200 dark:border-slate-700 text-indigo-700 dark:text-slate-200 font-medium rounded-xl hover:bg-indigo-50 dark:hover:bg-slate-800/50 transition-all duration-300"
+              >
+                Let's Talk
+              </motion.button>
+            </a>
+          </motion.div>
+
+          <motion.div 
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+          >
+            <div className="flex flex-col items-center">
+              <span className="text-sm text-slate-500 dark:text-slate-400 mb-2">Scroll Down</span>
+              <motion.div 
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                className="w-10 h-10 rounded-full border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500"
+              >
+                <HiOutlineChevronDown className="text-xl" />
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </Section>
 
       {/* About Section */}
@@ -294,7 +376,7 @@ export default function App() {
       <footer className="py-10 text-center">
         <div className="flex justify-center space-x-6 mb-6">
           <a 
-            href="https://github.com/yourusername" 
+            href="https://github.com/Shamodoshan" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white transition-colors"
@@ -303,7 +385,7 @@ export default function App() {
             <FaGithub className="w-6 h-6" />
           </a>
           <a 
-            href="https://linkedin.com/in/yourusername" 
+            href="https://www.linkedin.com/in/shamodoshan" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
@@ -312,7 +394,7 @@ export default function App() {
             <FaLinkedin className="w-6 h-6" />
           </a>
           <a 
-            href="https://instagram.com/yourusername" 
+            href="https://www.instagram.com/shamod_oshan/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
@@ -321,7 +403,7 @@ export default function App() {
             <FaInstagram className="w-6 h-6" />
           </a>
           <a 
-            href="https://facebook.com/yourusername" 
+            href="https://web.facebook.com/profile.php?id=100056890793433" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500 transition-colors"
