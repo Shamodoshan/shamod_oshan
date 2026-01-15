@@ -260,12 +260,12 @@ export default function App() {
             
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-6 rounded-2xl text-white shadow-lg">
-                <div className="text-4xl font-bold mb-1">10+</div>
+                <div className="text-4xl font-bold mb-1">3</div>
                 <div className="text-xs uppercase tracking-widest opacity-80">Projects</div>
               </div>
               <div className="bg-gradient-to-br from-purple-600 to-indigo-600 p-6 rounded-2xl text-white shadow-lg">
-                <div className="text-4xl font-bold mb-1">1+</div>
-                <div className="text-xs uppercase tracking-widest opacity-80">Years Experience</div>
+                <div className="text-4xl font-bold mb-1">8</div>
+                <div className="text-xs uppercase tracking-widest opacity-80">Months Experience</div>
               </div>
             </div>
           </div>
@@ -413,7 +413,7 @@ export default function App() {
           </a>
         </div>
         <div className="text-sm text-gray-500 dark:text-gray-400">
-          © 2025 Shamod Oshan. All rights reserved.
+          © 2026 Shamod Oshan. All rights reserved.
         </div>
       </footer>
     </div>
